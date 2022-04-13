@@ -6,5 +6,45 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+.memory-game-container {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    height: 730px;
+    perspective: 1000px;
+}
 
+.card {
+    width: calc(25% - 10px);
+    height: calc(25% - 10px);
+    margin: 5px;
+    position: relative;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
 
+img {
+    width: 125px;
+    border-radius: 5px;
+}
+
+.card:active {
+    transform: scale(.95);
+    transition: transform .2s;
+}
+
+.card.flip {
+    transform: rotateY(180deg) translateX(100%);
+}
+
+.front-face,
+.back-face {
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front-face {
+    transform: rotateY(180deg) translateX(100%);
+}
