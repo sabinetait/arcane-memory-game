@@ -1,4 +1,5 @@
 // Card Info
+// all media is from RiotGames' Arcane: League of Legends
 const cardData = () => [
     { id: 'caitlyn', src:'./assets/caitlyn.webp', alt: 'Caitlyn'},
     { id: 'jayce', src:'./assets/jayce.webp', alt: 'Jayce'},
@@ -33,13 +34,13 @@ const generateCards = () => {
             card.classList = 'card';
             const front = document.createElement('img');
             front.classList = 'front-face';
-            const back = document.createElement('img');
+            const back = document.createElement('div');
             back.classList = 'back-face'; 
             // Add images to cards
             front.src = character.src;
             front.alt = character.alt;
-            back.src = './assets/card-back-face.webp';
-            back.alt = 'back-face';
+            // back.src = './assets/card-back-face.webp';
+            // back.alt = 'back-face';
             card.setAttribute('id', character.id);
             // Append to game container
             gameContainer.appendChild(card);
@@ -79,7 +80,6 @@ const checkCards = (event) => {
         }
     }
 }
-checkCards();
 // Reset at the end of the game
 // Keep a counter?
 

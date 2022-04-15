@@ -6,13 +6,64 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+html {
+    font-size: 125%;
+}
+
+body {
+    background-image: url(./assets/background.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+@font-face {
+    font-family: 'arcane_nineregular';
+    src: url('./assets/font/arcane_nine-webfont.woff2') format('woff2'),
+         url('./assets/font/arcane_nine-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1,
+h2,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+header { 
+    height: 7vh;
+    margin: 1vh 0;
+    margin-bottom: 2%;
+}
+
+h1 {
+    font-family: 'arcane_nineregular';
+    font-size: 3.3rem;
+    text-align: center;
+    color: #deeaea;
+}
+
+main {
+    height: 625px;
+    margin-bottom: 2%;
+}
+
+.wrapper {
+    width: 85%;
+    max-width: 1400px;
+}
+
 .memory-game-container {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    width: 600px;
-    height: 730px;
     perspective: 1000px;
+    width: 525px;
+    height: 100%;
 }
 
 .card {
@@ -23,11 +74,6 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
     transform: scale(1);
     transform-style: preserve-3d;
     transition: transform 0.5s;
-}
-
-img {
-    width: 100%;
-    border-radius: 5px;
 }
 
 .card:active {
@@ -44,8 +90,30 @@ img {
     position: absolute;
     backface-visibility: hidden;
     pointer-events: none;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.back-face {
+    background-color: rgba(222, 234, 234, 0.5);
+    border: #3fb3ac 2px outset;
 }
 
 .front-face {
     transform: rotateY(180deg);
+}
+
+footer {
+    height: 5.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6E616F;
+}
+
+footer > p {
+    font-family: 'arcane_nineregular';
+    font-size: 1rem;
+    color: #deeaea;
 }
