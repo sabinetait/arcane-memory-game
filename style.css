@@ -141,6 +141,7 @@ footer {
 footer > p {
     font-size: 1rem;
     color: #deeaea;
+    margin-top: 25px;
 }
 
 footer > p > a {
