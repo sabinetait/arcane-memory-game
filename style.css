@@ -46,7 +46,7 @@ h1 {
 }
 
 main {
-    height: calc(87.5vh - 25px);
+    height: 87.5vh;
     margin-bottom: 10px;
     position: relative;
 }
@@ -135,6 +135,7 @@ footer {
     justify-content: center;
     align-items: center;
     background-color: #6E616F;
+    margin-top: 25px;
 }
 
 footer > p {
@@ -151,4 +152,15 @@ footer > p > a {
 footer > p > a:hover,
 footer > p > a:focus {
     color: #3fb3ac;
+}
+
+/* Media Queries */
+@media (max-width: 850px) {
+    button {
+        bottom: 150px;
+    }
+
+    footer {
+        margin-top: 0px;
+    }
 }
