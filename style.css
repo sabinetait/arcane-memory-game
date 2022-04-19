@@ -164,3 +164,33 @@ footer > p > a:focus {
         margin-top: 0px;
     }
 }
+
+@media (max-width: 600px) {
+    header {
+        margin: 45px 45px 55px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    main {
+        height: 100vh;
+    }
+
+    .memory-game-container {
+        width: 350px;
+        height: 460px;
+    }
+
+    .card {
+        width: calc(25% - 15px);
+        height: calc(25% - 15px);
+    }
+
+    button {
+        bottom: 15px;
+        margin: 15px 0px;
+    }
+
+}
