@@ -17,43 +17,44 @@ const cardData = () => [
     { id: 'vander', src:'./assets/vander.webp', alt: 'Vander'},
     { id: 'vi', src:'./assets/vi.webp', alt: 'Vi'},
     { id: 'viktor', src:'./assets/viktor.webp', alt: 'Viktor'}
-]
+];
 
 // Capture game container
 const gameContainer = document.querySelector('.memory-game-container');
+// Capture all game card data
+const appData = cardData();
+// Randomize cards
+const randomizer = () => {
+    appData.sort(() => Math.random() - 0.5);
+    return appData;
+}
+randomizer();
 
 // Generate cards
 const generateCards = () => {
-    // Randomize cards
-    const randomizer = () => {
-    const characterCards = cardData();
-    characterCards.sort(() => Math.random() - 0.5);
-        // Create HTML elements
-        characterCards.forEach((character) => {
-            const card = document.createElement('div');
-            card.classList = 'card';
-            const front = document.createElement('img');
-            front.classList = 'front-face';
-            const back = document.createElement('div');
-            back.classList = 'back-face'; 
-            // Add images to cards
-            front.src = character.src;
-            front.alt = character.alt;
-            // back.src = './assets/card-back-face.webp';
-            // back.alt = 'back-face';
-            card.setAttribute('id', character.id);
-            // Append to game container
-            gameContainer.appendChild(card);
-            card.appendChild(front);
-            card.appendChild(back);
-            // Card Flip
-            card.addEventListener('click', (event) => {
-                card.classList.toggle('flipCard');
-                checkCards(event);
-            })
+    const appData = randomizer();
+    // Create HTML elements
+    appData.forEach((character) => {
+        const card = document.createElement('div');
+        card.classList = 'card';
+        const front = document.createElement('img');
+        front.classList = 'front-face';
+        const back = document.createElement('div');
+        back.classList = 'back-face'; 
+        // Add images to cards
+        front.src = character.src;
+        front.alt = character.alt;
+        card.setAttribute('id', character.id);
+        // Append to game container
+        gameContainer.appendChild(card);
+        card.appendChild(front);
+        card.appendChild(back);
+        // Card Flip
+        card.addEventListener('click', (event) => {
+            card.classList.toggle('flipCard');
+            checkCards(event);
         })
-    }
-    randomizer();
+    })
 }
 generateCards();
 
@@ -75,12 +76,31 @@ const checkCards = (event) => {
         } else {
             flippedCards.forEach(card => {
                 card.classList.remove('isFlipped');
-                setTimeout(() => card.classList.remove('flipCard'), 1200);
+                setTimeout(() => card.classList.remove('flipCard'), 1000);
             })
         }
     }
 }
+
 // Reset at the end of the game
-// Keep a counter?
+// Capture reset button
+const resetButton = document.querySelector('button');
+// Flip all cards over
+// Reset cards by clearing container and regenerating randomized cards again
+const resetCards = () => {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card) => {
+        card.classList.remove('flipCard');
+    })
+    setTimeout(() => {
+        gameContainer.innerHTML = ''
+        generateCards()
+    }, 250);;
+}
+// Call reset function on click
+resetButton.addEventListener('click', resetCards);
+
+
+// Keep a counter?/Add a hard-mode with limited lives?
 
 
